@@ -1,0 +1,428 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<title>{{ page.title }}</title>
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+	<meta name="description" content="{{page.description}}">
+	<link rel="shortcut icon" type="image/png" href="/assets/logo.ico">
+		  
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="{{page.title}}">
+	<meta name="twitter:description" content="{{page.description}}">
+	<meta name="twitter:url" content="{{site.base_url}}{{page.url}}">
+	<meta name="twitter:image" content="{{site.base_url}}/assets/covers/{{page.cover_image}}">
+
+	<meta property="og:site_name" content="kdqed">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="{{site.base_url}}{{page.url}}">
+	<meta property="og:title" content="{{page.title}}">
+	<meta property="og:description" content="{{page.description}}">
+
+	<meta property="og:image" content="{{site.base_url}}/assets/covers/{{page.cover_image}}">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+	<style>
+	  * {
+	  	box-sizing: border-box;
+	  	font-family: "Jost", sans-serif;
+	  	margin: 0;
+	  	padding: 0;
+	  }
+
+	  :root {
+	    --bg1: #091018;
+	    --bgt: #091018a0;
+	    --bgt1: #091018d0;
+	    --bgt2: #091018fa;
+	    --bg2: #091018;
+	    --fg1: #ffffff;
+	    --fg2: #bad3e8;
+	    --td: #175a92;
+	    --tl: #5ca8e6;
+	    --base-size: clamp(18px, 1.7vw, 32px);
+	    --max-width: calc(var(--base-size)*42);
+	    font-size: var(--base-size);
+	    letter-spacing: 0.01rem;
+	  }
+
+	  body {
+	    font-size: var(--base-size);
+	    background: var(--bg1);
+	    color: var(--fg2);
+	    margin: 0;
+	    padding: 0;
+	  }
+			
+	  a {
+	    color: inherit;
+	  }
+
+	  #backdrop {
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100vh;
+	    background: url(/assets/covers/{{page.cover_image}});
+	    background-position: left top;
+	    background-size: cover;
+	    z-index: -20;
+	  }
+
+	  header {
+	    color: var(--fg1);
+	    display: grid;
+	    padding: 0.5rem;
+	    align-items: center;
+	    grid-template-columns: 1fr auto auto auto;
+	    gap: 1rem;
+	    background: var(--bgt1);
+	    background-blend-mode: multiply;
+	    backdrop-filter: blur(48px);
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: auto;
+	    z-index: 10;
+	  }
+      
+      header>a.logo {
+        display: inline-block;
+        height: 2rem;
+      }
+      
+	  header img {
+	    height: 2rem;
+	    width: auto;
+	    mix-blend-mode: plus-lighter;
+	  }
+			
+	  header a {
+	    font-size: 0.75rem;
+	    text-decoration: none;
+	    display: inline-flex;
+	    align-content: center;
+	  }
+
+	  header>span {
+		display: inline-flex;
+	    align-content: center;
+	  }
+
+	  header a svg {
+		width: 1.25rem;
+		height: 1.25rem;
+	  }
+			
+	  header .cta {
+	    display: inline-flex;
+	    align-items: center;
+	    gap: 0.5rem;
+	    background: var(--td);
+	    font-size: 0.75rem;
+	    text-decoration: none;
+	    padding: 0.25rem 0.75rem;
+	    border-radius: 0.25rem;
+	    border: 0.1rem solid var(--td);
+	  }
+			
+	  a.mail-link svg {
+        height: 1rem;
+        width: auto;
+      }
+      
+      a.mail-link svg path {
+        stroke: var(--tgreen);
+        stroke-width: 0.07rem;
+      }
+
+	  main {
+	    text-align: center;
+	    padding: 0;
+	  }	
+
+	  .hero-container, .content-container {
+	    width: 100%;
+	    text-align: center;
+	  }
+
+	  .hero-container {
+	    color: var(--fg1);
+	    display: grid;
+	    place-items: center;
+	    padding: 17vh 1rem 10vh 1rem;
+	    background: var(--bgt1);
+	    background-blend-mode: multiply;
+	    backdrop-filter: blur(12px);
+	  }
+
+	  .content-container {
+	    background: var(--bgt2);
+	    padding-top: 5vh;
+	    padding-bottom: 10vh;
+	    background-blend-mode: multiply;
+	    backdrop-filter: blur(64px);
+	    border-top: 0.2rem solid var(--bg2);
+	    border-bottom: 0.2rem solid var(--bg2);
+	  }
+			
+	  section.hero {
+	    display: inline-block;
+	    width: 100%;
+	    max-width: var(--max-width);
+	  }
+			
+	  section.hero .dp {
+	    width: 6rem;
+	    height: auto;
+	    border-radius: 100%;
+	    border: 0.25rem solid var(--bgt);
+	    margin-bottom: 1rem;
+	  }
+
+	  section.hero h2 {
+		font-weight: 400;
+		font-size: 1.25rem;
+		color: var(--fg2);
+	  }
+			
+	  section.content {
+	    display: inline-block;
+	    width: 100%;
+	    max-width: var(--max-width);
+	    text-align: left;
+	    padding: 1rem;
+	    color: var(--fg2);
+	    line-height: 170%;
+	  }
+			
+	  section.content>* {
+	    margin-top: 1rem;
+	  }
+		
+	  footer {
+	  	text-align: center;
+	  	padding: 2rem 1rem 100vh 1rem;
+	  }
+			
+	  footer>div {
+	    background-blend-mode: multiply;
+	    background: var(--bgt1);
+	    color: var(--fg2);
+	    font-size: 1rem;
+	    backdrop-filter: blur(12px);
+	    display: inline-flex;
+	    flex-wrap: wrap;
+	    align-items: center;
+	    text-align: center;
+	    justify-content: center;
+	    gap: 1rem;
+	    padding: 1rem;
+	    border-radius: 0.5rem;
+	  }
+			
+	  footer nav {
+	    display: flex;
+	    align-items: center;
+	    text-align: center;
+	    gap: 0.5rem;
+	  }
+			
+	  footer nav a {
+	    display: inline-flex;
+	    height: 100%;
+	    align-items: center;
+	    color: inherit;
+	  }
+      
+      footer nav svg {
+        height: 1.25rem;
+        width: auto;
+      }
+      
+      footer nav svg path {
+        stroke: var(--fg2);
+        stroke-width: 0.07rem;
+      }
+      
+	  h1 {
+	    font-size: 1.6rem;
+	    display: inline-block;
+	    padding: 0.25rem 0.5rem;
+	    border-radius: 0.25rem;
+	    color: var(--fg1);
+	  }
+      
+      section.content a {
+        color: var(--tcyan);
+      }
+      
+	  section.content>h2 {
+	    color: var(--fg3);
+	    font-size: 1.25rem;
+	    color: var(--fg1);
+	  }
+
+	  section.content>h2:not(:first-child) {
+	    margin-top: 3rem;
+	  }
+			
+	  section.content>p>img {
+	    width: 100%;
+	  }
+			
+	  section.content>table {
+	    width: 100%;
+	    border-collapse: collapse;
+	    display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+	  }
+			
+	  section.content>table th {
+	    background: var(--fgt);
+	    color: var(--bg1);
+	    padding: 0.25rem 0.5rem;
+	    font-size: 0.8rem;
+	  }
+			
+	  section.content>table td {
+	    background: var(--bgt2);
+	    padding: 0.25rem 0.5rem;
+	    font-size: 0.8rem;
+	    border: 1px solid var(--fgt);
+	    max-width: 60vw;
+	    white-space: wrap;
+	  }
+			
+	  section.content>table tr:nth-child(2n) td {
+	    background: var(--bgt);
+	  }
+
+	  ul, ol, p {
+	    font-size: inherit;
+	  }
+    
+      ul li {
+        margin-left: 0.5rem;
+        padding-left: 0.5rem;
+        margin-top: 0.25rem;
+      }
+      
+      ol li {
+        margin-left: 1.25rem;
+        padding-left: 0.5rem;
+        margin-top: 0.25rem;
+      }
+      
+	  ul li::marker {
+	    content: "o";
+	  }
+			
+	  li>a:first-child {
+	    color: var(--tcyan);
+	  }
+      
+      blockquote {
+        background: var(--bg1);
+        padding: 0.5rem;
+        font-size: 0.9rem;
+        line-height: 160%;
+        border-radius: 0.25rem;
+        border: 0.15rem solid var(--tred);
+      }
+      
+      blockquote>p {
+        margin: 0;
+      }
+
+	  p>em:only-child {
+		color: var(--tyellow);
+	  }
+      
+      .text-badge {
+        background: var(--tyellow);
+        color: var(--fg3);
+        display: inline-block;
+        padding: 0.125rem 0.25rem;
+        padding-bottom: 0.02rem;
+        border-radius: 0.0rem;
+        font-size: 75%;
+      }
+	</style>
+		
+		{% if page.is_post %}
+		<script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "{{page.schema_type}}",
+		  "headline": "{{page.title}}",
+		  "image": [
+		  	"/assets/covers/{{page.cover_image}}"
+		  ],
+		  "datePublished": "{{page.date}}",
+		  "dateModified": "{{page.date}}",
+		  "author": [{
+		  	"@type": "Person",
+		  	"name": "Karthik Devan",
+		  	"url": "https://kdqed.com"
+		  }]
+		}
+		</script>
+		{% endif %}
+		
+  </head>
+  <body>
+    <div id="backdrop"></div>
+    <header>
+	  <a href="/" class="logo">
+        <img src="/assets/logo.png" alt="logo">
+	  </a>
+	  <a href="/install" class="logo">
+        Install
+	  </a>
+	  <a class="github-button" href="https://github.com/kdqed/zaturn" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star kdqed/zaturn on GitHub">
+		Star
+	  </a>
+	  <a href="/demo" class='cta'>
+	    <span>Schedule Demo</span>
+	  </a>
+    </header>
+    <main>
+	  <div class="hero-container">
+		<section class="hero">
+		  {% if page.url == '/' %}
+		  <img src='/assets/dp.webp' class='dp'>
+		  <br>
+		  {% endif %}
+		  <h1>{{page.title}}</h1>
+		  {% if page.subtitle %}
+		  <h2>{{page.subtitle}}</h2>
+		  {% endif %}
+		</section>
+	  </div>
+	  <div class="content-container">
+		<section class="content">
+		  {% if page.is_post %}
+		  <p><em>{{page.date | date: "%B %-d, %Y"}}</em></p>
+      	{% endif %}
+		  {{content}}
+		</section>
+	  </div>
+    </main>
+	<footer>
+	  <div>
+	    <div>© <a href="https://kdqed.com">Karthik Devan</a> (maintainer of Zaturn)</div>
+	    <nav>
+	    </nav>
+	  </div>
+	</footer>
+  </body>
+  
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</html>
