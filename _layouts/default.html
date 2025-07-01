@@ -23,8 +23,8 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	
 	<style>
 	  * {
 	  	box-sizing: border-box;
@@ -38,7 +38,7 @@
 	    --bgt: #091018a0;
 	    --bgt1: #091018d0;
 	    --bgt2: #091018fa;
-	    --bg2: #091018;
+	    --bg2: #182030;
 	    --fg1: #ffffff;
 	    --fg2: #bad3e8;
 	    --td: #175a92;
@@ -158,7 +158,7 @@
 	    padding: 17vh 1rem 10vh 1rem;
 	    background: var(--bgt1);
 	    background-blend-mode: multiply;
-	    backdrop-filter: blur(12px);
+	    backdrop-filter: blur(6px);
 	  }
 
 	  .content-container {
@@ -167,8 +167,6 @@
 	    padding-bottom: 10vh;
 	    background-blend-mode: multiply;
 	    backdrop-filter: blur(64px);
-	    border-top: 0.2rem solid var(--bg2);
-	    border-bottom: 0.2rem solid var(--bg2);
 	  }
 			
 	  section.hero {
@@ -354,6 +352,19 @@
         border-radius: 0.0rem;
         font-size: 75%;
       }
+
+      pre {
+		padding: 0.5rem;
+		background: var(--bg2);
+		border-radius: 0.1rem;
+		overflow-x: auto;
+		width: 100%;
+		font-size: 80%;
+      }
+
+      pre>code, pre>code * {
+		font-family: "Fira Code", monospace;
+      }
 	</style>
 		
 		{% if page.is_post %}
@@ -389,7 +400,7 @@
 	  <a class="github-button" href="https://github.com/kdqed/zaturn" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star kdqed/zaturn on GitHub">
 		Star
 	  </a>
-	  <a href="/demo" class='cta'>
+	  <a href="https://cal.com/kdqed/zaturn-demo" class='cta'>
 	    <span>Schedule Demo</span>
 	  </a>
     </header>
