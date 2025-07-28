@@ -2,21 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-	<title>Installing Zaturn</title>
+	<title>Supported Data Sources</title>
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 	<meta name="description" content="AI-powered data analysis for everyone">
 	<link rel="shortcut icon" type="image/png" href="/assets/logo.ico">
 		  
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Installing Zaturn">
+	<meta name="twitter:title" content="Supported Data Sources">
 	<meta name="twitter:description" content="AI-powered data analysis for everyone">
-	<meta name="twitter:url" content="https://zaturn.pro/install.html">
+	<meta name="twitter:url" content="https://zaturn.pro/docs/data-sources.html">
 	<meta name="twitter:image" content="https://zaturn.pro/assets/covers/default.webp">
 
 	<meta property="og:site_name" content="kdqed">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="https://zaturn.pro/install.html">
-	<meta property="og:title" content="Installing Zaturn">
+	<meta property="og:url" content="https://zaturn.pro/docs/data-sources.html">
+	<meta property="og:title" content="Supported Data Sources">
 	<meta property="og:description" content="AI-powered data analysis for everyone">
 
 	<meta property="og:image" content="https://zaturn.pro/assets/covers/default.webp">
@@ -371,8 +371,8 @@
 	  <a href="/" class="logo">
         <img src="/assets/logo.png" alt="logo">
 	  </a>
-	  <a href="/install" class="logo">
-        Install
+	  <a href="/docs">
+        Docs
 	  </a>
 	  <a class="github-button" href="https://github.com/kdqed/zaturn" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star kdqed/zaturn on GitHub">
 		Star
@@ -380,119 +380,106 @@
 	  <a href="https://discord.gg/K8mECeVzpQ">
 		<img src="/assets/discord.png" style="width: auto;">
 	  </a>
-	  <a href="https://cal.com/kdqed/zaturn-demo" class='cta'>
-	    <span>Schedule Demo</span>
+	  <a href="/docs/install" class='cta'>
+	    <span>Install</span>
 	  </a>
     </header>
     <main>
 	  <div class="hero-container">
 		<section class="hero">
 		  
-		  <h1>Installing Zaturn</h1>
+		  <h1>Supported Data Sources</h1>
 		  
 		</section>
 	  </div>
 	  <div class="content-container">
 		<section class="content">
 		  
-		  <p>Zaturn can be installed as a web interface or as an MCP. If this is too technical for you, please feel free to <a href="https://cal.com/kdqed/zaturn-demo">schedule a demo</a> for assistance.</p>
+		  <p>Zaturn supports the data sources listed below. For each data source, please take security precautions by ensuring read-only access through URL credentials, or making backup copies of data files. This is critical because AI LLMs will be running SQL on your data directly and they can be quite unpredictable.</p>
 
-<h2 id="1-setting-up-the-web-interface">1. Setting up the Web Interface</h2>
+<h2 id="clickhouse">Clickhouse</h2>
 
-<h3 id="11-install-python-and-uv">1.1. Install Python and uv</h3>
+<p>Clickhouse is supported using the <a href="https://clickhouse.com/docs/integrations/python">ClickHouse Connect Python Driver</a> under the hood.</p>
 
-<p>Zaturn is built with Python, so you need Python to run it. You don’t need to know Python programming though.</p>
+<p>You can specify database URLs in the following format:</p>
 
-<p><a href="https://github.com/astral-sh/uv">uv</a> is a package manager for Python, and if you’re starting from scratch, it’s pretty easy to get uv first and then install Python using uv.</p>
-
-<p>uv can be installed on MacOS/Windows/Linux using the <a href="https://docs.astral.sh/uv/getting-started/installation/">instructions on their page</a>. Then, run the following command to install Python:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>uv python <span class="nb">install</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clickhouse://username:password@host:port/dbname
 </code></pre></div></div>
 
-<h3 id="12-install-zaturn-from-pypi">1.2. Install Zaturn from PyPI</h3>
+<p>Zaturn tries to not let any data to be modified by executing <code class="language-plaintext highlighter-rouge">SET readonly=1;</code> before every query. However, please use an <code class="language-plaintext highlighter-rouge">username</code> with read-only access to ensure no data is modified.</p>
 
-<p>Install the <a href="https://pypi.org/project/zaturn/">Zaturn package from PyPI</a> using the following command:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>uv tool add zaturn
+<h2 id="csv">CSV</h2>
+
+<p>Zaturn handles running SQL on CSV files using the <a href="https://duckdb.org/docs/stable/clients/python/overview.html">DuckDB Python client</a>.</p>
+
+<ul>
+  <li>For Zaturn Studio, upload the CSV files.</li>
+  <li>For MCP, specify the full path to the CSV file in the MCP config (e.g.: /full/path/to/sample_dbs/ny_aq.csv). Make a backup copy of the CSV just in case the file is modified or cleared.</li>
+</ul>
+
+<h2 id="duckdb">DuckDB</h2>
+
+<p>Zaturn handles running SQL on <code class="language-plaintext highlighter-rouge">.duckdb</code> database files using the <a href="https://duckdb.org/docs/stable/clients/python/overview.html">DuckDB Python client</a>. Please ensure that the extension of the file is <code class="language-plaintext highlighter-rouge">.duckdb</code> to ensure that the appropriate client is used to read this file.</p>
+
+<ul>
+  <li>For Zaturn Studio, upload the DuckDB file.</li>
+  <li>For MCP, specify the full path to the DuckDB file in the MCP config (e.g.: /full/path/to/sample_dbs/duckdb_sample.duckdb). Make a backup copy of the DuckDB file just in case the file is modified or cleared.</li>
+</ul>
+
+<h2 id="mysql">MySQL</h2>
+
+<p>For working with MySQL databases, Zaturn uses <a href="https://docs.sqlalchemy.org/en/20/dialects/mysql.html">SQLAlchemy</a></p>
+
+<p>You can specify database URLs in the following format:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql://username:password@host:port/dbname
 </code></pre></div></div>
 
-<p>OR use <code class="language-plaintext highlighter-rouge">pip</code> if you already have it:</p>
+<p>Zaturn tries to not let any data to be modified by executing <code class="language-plaintext highlighter-rouge">SET SESSION TRANSACTION READ ONLY;</code> before every query in a separate session. However, please use an <code class="language-plaintext highlighter-rouge">username</code> with read-only access to ensure no data is modified.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pip <span class="nb">install </span>zaturn
+<h2 id="parquet">Parquet</h2>
+
+<p>Zaturn handles running SQL on Parquet files using the <a href="https://duckdb.org/docs/stable/clients/python/overview.html">DuckDB Python client</a>.</p>
+
+<ul>
+  <li>For Zaturn Studio, upload the Parquet files.</li>
+  <li>For MCP, specify the full path to the Parquet file in the MCP config (e.g.: /full/path/to/sample_dbs/titanic.parquet). Make a backup copy of the Parquet file just in case the file is modified or cleared.</li>
+</ul>
+
+<h2 id="postgresql">PostgreSQL</h2>
+
+<p>Zaturn uses <a href="https://docs.sqlalchemy.org/en/20/dialects/postgresql.html">SQLAlchemy</a> to work with PostgreSQL databases.</p>
+
+<p>You can specify database URLs in the following format:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>postgresql://username:password@host:port/dbname
 </code></pre></div></div>
 
-<h3 id="13-run-zaturn-studio">1.3. Run Zaturn Studio</h3>
+<p>Zaturn tries to not let any data to be modified by setting <code class="language-plaintext highlighter-rouge">postgresql_readonly=True</code> in the connection options. However, please use an <code class="language-plaintext highlighter-rouge">username</code> with read-only access to ensure no data is modified.</p>
 
-<p>Run the following command, this will start the web interface.</p>
+<h2 id="sqlite">SQLite</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ zaturn_studio
+<p>Zaturn works with SQLite databases files using <a href="https://docs.sqlalchemy.org/en/20/dialects/sqlite.html">SQLAlchemy</a>.</p>
+
+<ul>
+  <li>For Zaturn Studio, upload the SQLite files.</li>
+  <li>For MCP, specify the full path to the SQLite file, prefixed with <code class="language-plaintext highlighter-rouge">sqlite:///</code> in the MCP config (e.g.: sqlite:////full/path/to/sample_dbs/northwind.db). Make a backup copy of the database file just in case the file is modified or cleared.</li>
+</ul>
+
+<p>Zaturn tries to not let any data to be modified by executing <code class="language-plaintext highlighter-rouge">PRAGMA query_only = ON;</code> before every query. However, take adequate precautions on your end to avoid data losses.</p>
+
+<h2 id="sql-server">SQL Server</h2>
+
+<p>For working with MS SQL Server databases, Zaturn uses <a href="https://docs.sqlalchemy.org/en/20/dialects/mssql.html">SQLAlchemy</a></p>
+
+<p>You can specify database URLs in the following format:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mssql://username:password@host:port/dbname
 </code></pre></div></div>
-
-<p>Next, open the following URL on your browser:</p>
 
 <blockquote>
-  <p>http://localhost:6066</p>
+  <p>IMPORTANT: With MSSQL, it has not been possible to ensure that the database connection is read-only using the available client libraries. Therefore, please ensure that the <code class="language-plaintext highlighter-rouge">username</code> specified in the database URL has only read-only access and cannot modify any data.</p>
 </blockquote>
-
-<h3 id="14-setup-llm-api">1.4. Setup LLM API</h3>
-
-<p>Note that Zaturn is an open source bundle of tools that can be used by an LLM. While this part is free, providing an LLM for free is not possible on a solo indie-developer budget.</p>
-
-<p>Therefore, you’ll have to bring your own OpenAI-compatible LLM API. Please add the API endpoint, API key, and model name on the Zaturn studio interface.</p>
-
-<h3 id="15-add-data-sources">1.5. Add Data Sources</h3>
-
-<p>Add data sources when prompted. For file-based sources, upload the files. Zaturn Studio will make its own copy of the file and work on that. For database URLs, please ensure the URLs grant just read-only access to the database. While Zaturn tries to ensure that the AI LLM cannot write/modify data on any of the linked sources, this is on a best-effort basis and not guaranteed to work 100% of the time.</p>
-
-<h2 id="2-setting-up-the-mcp-server">2. Setting up the MCP Server</h2>
-
-<h3 id="21-install-python-and-uv">2.1. Install Python and uv</h3>
-
-<p>Zaturn is built with Python, so you need Python to run it. You don’t need to know Python programming though.</p>
-
-<p><a href="https://github.com/astral-sh/uv">uv</a> is a package manager for Python, and if you’re starting from scratch, it’s pretty easy to get uv first and then install Python using uv.</p>
-
-<p>uv can be installed on MacOS/Windows/Linux using the <a href="https://docs.astral.sh/uv/getting-started/installation/">instructions on their page</a>. Then, run the following command to install Python:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>uv python <span class="nb">install</span>
-</code></pre></div></div>
-
-<h3 id="22-install-zaturn-from-pypi">2.2. Install Zaturn from PyPI</h3>
-
-<p>Install the <a href="https://pypi.org/project/zaturn/">Zaturn package from PyPI</a> using the following command:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>uv tool add zaturn
-</code></pre></div></div>
-
-<p>OR use <code class="language-plaintext highlighter-rouge">pip</code> if you already have it:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pip <span class="nb">install </span>zaturn
-</code></pre></div></div>
-
-<h3 id="23-add-zaturn--data-sources-to-mcp-config">2.3. Add Zaturn &amp; Data sources to MCP Config</h3>
-
-<p>Modify your client’s MCP config JSON file to add Zaturn. You can link data sources as <code class="language-plaintext highlighter-rouge">args</code>. An example is shown below:</p>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"mcpServers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nl">"zaturn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zaturn_mcp"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"postgresql://username:password@host:port/dbname"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"mysql://username:password@host:3306/dbname"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"sqlite:////full/path/to/sample_dbs/northwind.db"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"clickhouse://username:password@host:port/dbname"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"/full/path/to/sample_dbs/titanic.parquet"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"/full/path/to/sample_dbs/ny_aq.csv"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"/full/path/to/sample_dbs/duckdb_sample.duckdb"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
-
-<h3 id="24-data-intergrity-tips">2.4. Data Intergrity Tips</h3>
-
-<p>For file-based sources, please have a backup copy.</p>
-
-<p>For database URLs, please ensure the URLs grant just read-only access to the database. While Zaturn tries to ensure that the AI LLM cannot write/modify data on any of the linked sources, this is on a best-effort basis and not guaranteed to work 100% of the time.</p>
 
 
 		</section>

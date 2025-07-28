@@ -2,24 +2,24 @@
 <html>
   <head>
     <meta charset="utf-8">
-	<title>{{ page.title }}</title>
+	<title>Installing Zaturn</title>
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-	<meta name="description" content="{{page.description}}">
+	<meta name="description" content="AI-powered data analysis for everyone">
 	<link rel="shortcut icon" type="image/png" href="/assets/logo.ico">
 		  
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="{{page.title}}">
-	<meta name="twitter:description" content="{{page.description}}">
-	<meta name="twitter:url" content="{{site.base_url}}{{page.url}}">
-	<meta name="twitter:image" content="{{site.base_url}}/assets/covers/{{page.cover_image}}">
+	<meta name="twitter:title" content="Installing Zaturn">
+	<meta name="twitter:description" content="AI-powered data analysis for everyone">
+	<meta name="twitter:url" content="https://zaturn.pro/docs/install.html">
+	<meta name="twitter:image" content="https://zaturn.pro/assets/covers/default.webp">
 
 	<meta property="og:site_name" content="kdqed">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="{{site.base_url}}{{page.url}}">
-	<meta property="og:title" content="{{page.title}}">
-	<meta property="og:description" content="{{page.description}}">
+	<meta property="og:url" content="https://zaturn.pro/docs/install.html">
+	<meta property="og:title" content="Installing Zaturn">
+	<meta property="og:description" content="AI-powered data analysis for everyone">
 
-	<meta property="og:image" content="{{site.base_url}}/assets/covers/{{page.cover_image}}">
+	<meta property="og:image" content="https://zaturn.pro/assets/covers/default.webp">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,7 +67,7 @@
 	    left: 0;
 	    width: 100%;
 	    height: 100vh;
-	    background: url(/assets/covers/{{page.cover_image}});
+	    background: url(/assets/covers/default.webp);
 	    background-position: left top;
 	    background-size: cover;
 	    z-index: -20;
@@ -362,25 +362,7 @@
       }
 	</style>
 		
-		{% if page.is_post %}
-		<script type="application/ld+json">
-		{
-		  "@context": "https://schema.org",
-		  "@type": "{{page.schema_type}}",
-		  "headline": "{{page.title}}",
-		  "image": [
-		  	"/assets/covers/{{page.cover_image}}"
-		  ],
-		  "datePublished": "{{page.date}}",
-		  "dateModified": "{{page.date}}",
-		  "author": [{
-		  	"@type": "Person",
-		  	"name": "Karthik Devan",
-		  	"url": "https://kdqed.com"
-		  }]
-		}
-		</script>
-		{% endif %}
+		
 		
   </head>
   <body>
@@ -405,22 +387,42 @@
     <main>
 	  <div class="hero-container">
 		<section class="hero">
-		  {% if page.url == '/' %}
-		  <img src='/assets/dp.webp' class='dp'>
-		  <br>
-		  {% endif %}
-		  <h1>{{page.title}}</h1>
-		  {% if page.subtitle %}
-		  <h2>{{page.subtitle}}</h2>
-		  {% endif %}
+		  
+		  <h1>Installing Zaturn</h1>
+		  
 		</section>
 	  </div>
 	  <div class="content-container">
 		<section class="content">
-		  {% if page.is_post %}
-		  <p><em>{{page.date | date: "%B %-d, %Y"}}</em></p>
-      	{% endif %}
-		  {{content}}
+		  
+		  <p>Follow the steps below to install Zaturn.</p>
+
+<h2 id="1-install-python-and-uv">1. Install Python and uv</h2>
+
+<p>Zaturn is built with Python, so you need Python to run it. You don’t need to know Python programming though.</p>
+
+<p><a href="https://github.com/astral-sh/uv">uv</a> is a package manager for Python, and if you’re starting from scratch, it’s pretty easy to get uv first and then install Python using uv.</p>
+
+<p>uv can be installed on MacOS/Windows/Linux using the <a href="https://docs.astral.sh/uv/getting-started/installation/">instructions on their page</a>. Then, run the following command to install Python:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>uv python <span class="nb">install</span>
+</code></pre></div></div>
+
+<h2 id="2-install-zaturn-from-pypi">2. Install Zaturn from PyPI</h2>
+
+<p>Install the <a href="https://pypi.org/project/zaturn/">Zaturn package from PyPI</a> using the following command:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>uv tool add zaturn
+</code></pre></div></div>
+
+<p>OR use <code class="language-plaintext highlighter-rouge">pip</code> if you already have it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pip <span class="nb">install </span>zaturn
+</code></pre></div></div>
+
+<h2 id="3-use-zaturn">3. Use Zaturn</h2>
+
+<p>Zaturn can be used as an <a href="/docs/mcp">MCP</a> or as a <a href="/docs/webui">web interface</a>.</p>
+
 		</section>
 	  </div>
     </main>

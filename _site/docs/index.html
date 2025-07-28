@@ -2,24 +2,24 @@
 <html>
   <head>
     <meta charset="utf-8">
-	<title>{{ page.title }}</title>
+	<title>Zaturn Docs</title>
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-	<meta name="description" content="{{page.description}}">
+	<meta name="description" content="AI-powered data analysis for everyone">
 	<link rel="shortcut icon" type="image/png" href="/assets/logo.ico">
 		  
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="{{page.title}}">
-	<meta name="twitter:description" content="{{page.description}}">
-	<meta name="twitter:url" content="{{site.base_url}}{{page.url}}">
-	<meta name="twitter:image" content="{{site.base_url}}/assets/covers/{{page.cover_image}}">
+	<meta name="twitter:title" content="Zaturn Docs">
+	<meta name="twitter:description" content="AI-powered data analysis for everyone">
+	<meta name="twitter:url" content="https://zaturn.pro/docs/">
+	<meta name="twitter:image" content="https://zaturn.pro/assets/covers/default.webp">
 
 	<meta property="og:site_name" content="kdqed">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="{{site.base_url}}{{page.url}}">
-	<meta property="og:title" content="{{page.title}}">
-	<meta property="og:description" content="{{page.description}}">
+	<meta property="og:url" content="https://zaturn.pro/docs/">
+	<meta property="og:title" content="Zaturn Docs">
+	<meta property="og:description" content="AI-powered data analysis for everyone">
 
-	<meta property="og:image" content="{{site.base_url}}/assets/covers/{{page.cover_image}}">
+	<meta property="og:image" content="https://zaturn.pro/assets/covers/default.webp">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,7 +67,7 @@
 	    left: 0;
 	    width: 100%;
 	    height: 100vh;
-	    background: url(/assets/covers/{{page.cover_image}});
+	    background: url(/assets/covers/default.webp);
 	    background-position: left top;
 	    background-size: cover;
 	    z-index: -20;
@@ -362,25 +362,7 @@
       }
 	</style>
 		
-		{% if page.is_post %}
-		<script type="application/ld+json">
-		{
-		  "@context": "https://schema.org",
-		  "@type": "{{page.schema_type}}",
-		  "headline": "{{page.title}}",
-		  "image": [
-		  	"/assets/covers/{{page.cover_image}}"
-		  ],
-		  "datePublished": "{{page.date}}",
-		  "dateModified": "{{page.date}}",
-		  "author": [{
-		  	"@type": "Person",
-		  	"name": "Karthik Devan",
-		  	"url": "https://kdqed.com"
-		  }]
-		}
-		</script>
-		{% endif %}
+		
 		
   </head>
   <body>
@@ -405,22 +387,21 @@
     <main>
 	  <div class="hero-container">
 		<section class="hero">
-		  {% if page.url == '/' %}
-		  <img src='/assets/dp.webp' class='dp'>
-		  <br>
-		  {% endif %}
-		  <h1>{{page.title}}</h1>
-		  {% if page.subtitle %}
-		  <h2>{{page.subtitle}}</h2>
-		  {% endif %}
+		  
+		  <h1>Zaturn Docs</h1>
+		  
 		</section>
 	  </div>
 	  <div class="content-container">
 		<section class="content">
-		  {% if page.is_post %}
-		  <p><em>{{page.date | date: "%B %-d, %Y"}}</em></p>
-      	{% endif %}
-		  {{content}}
+		  
+		  <ol>
+  <li><a href="/docs/install">Installation</a></li>
+  <li><a href="/docs/mcp">Use as MCP</a></li>
+  <li><a href="/docs/webui">Use as Web Interface</a></li>
+  <li><a href="/docs/data-sources">Supported Data Sources</a></li>
+</ol>
+
 		</section>
 	  </div>
     </main>

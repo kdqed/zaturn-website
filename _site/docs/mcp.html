@@ -2,24 +2,24 @@
 <html>
   <head>
     <meta charset="utf-8">
-	<title>{{ page.title }}</title>
+	<title>Using Zaturn as an MCP</title>
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-	<meta name="description" content="{{page.description}}">
+	<meta name="description" content="AI-powered data analysis for everyone">
 	<link rel="shortcut icon" type="image/png" href="/assets/logo.ico">
 		  
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="{{page.title}}">
-	<meta name="twitter:description" content="{{page.description}}">
-	<meta name="twitter:url" content="{{site.base_url}}{{page.url}}">
-	<meta name="twitter:image" content="{{site.base_url}}/assets/covers/{{page.cover_image}}">
+	<meta name="twitter:title" content="Using Zaturn as an MCP">
+	<meta name="twitter:description" content="AI-powered data analysis for everyone">
+	<meta name="twitter:url" content="https://zaturn.pro/docs/mcp.html">
+	<meta name="twitter:image" content="https://zaturn.pro/assets/covers/default.webp">
 
 	<meta property="og:site_name" content="kdqed">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="{{site.base_url}}{{page.url}}">
-	<meta property="og:title" content="{{page.title}}">
-	<meta property="og:description" content="{{page.description}}">
+	<meta property="og:url" content="https://zaturn.pro/docs/mcp.html">
+	<meta property="og:title" content="Using Zaturn as an MCP">
+	<meta property="og:description" content="AI-powered data analysis for everyone">
 
-	<meta property="og:image" content="{{site.base_url}}/assets/covers/{{page.cover_image}}">
+	<meta property="og:image" content="https://zaturn.pro/assets/covers/default.webp">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,7 +67,7 @@
 	    left: 0;
 	    width: 100%;
 	    height: 100vh;
-	    background: url(/assets/covers/{{page.cover_image}});
+	    background: url(/assets/covers/default.webp);
 	    background-position: left top;
 	    background-size: cover;
 	    z-index: -20;
@@ -362,25 +362,7 @@
       }
 	</style>
 		
-		{% if page.is_post %}
-		<script type="application/ld+json">
-		{
-		  "@context": "https://schema.org",
-		  "@type": "{{page.schema_type}}",
-		  "headline": "{{page.title}}",
-		  "image": [
-		  	"/assets/covers/{{page.cover_image}}"
-		  ],
-		  "datePublished": "{{page.date}}",
-		  "dateModified": "{{page.date}}",
-		  "author": [{
-		  	"@type": "Person",
-		  	"name": "Karthik Devan",
-		  	"url": "https://kdqed.com"
-		  }]
-		}
-		</script>
-		{% endif %}
+		
 		
   </head>
   <body>
@@ -405,22 +387,37 @@
     <main>
 	  <div class="hero-container">
 		<section class="hero">
-		  {% if page.url == '/' %}
-		  <img src='/assets/dp.webp' class='dp'>
-		  <br>
-		  {% endif %}
-		  <h1>{{page.title}}</h1>
-		  {% if page.subtitle %}
-		  <h2>{{page.subtitle}}</h2>
-		  {% endif %}
+		  
+		  <h1>Using Zaturn as an MCP</h1>
+		  
 		</section>
 	  </div>
 	  <div class="content-container">
 		<section class="content">
-		  {% if page.is_post %}
-		  <p><em>{{page.date | date: "%B %-d, %Y"}}</em></p>
-      	{% endif %}
-		  {{content}}
+		  
+		  <p>Once you’ve <a href="/docs/install">installed Zaturn</a>, you can set it up to use as an MCP as follows:</p>
+
+<h2 id="add-zaturn--data-sources-to-mcp-config">Add Zaturn &amp; Data sources to MCP Config</h2>
+
+<p>Modify your LLM client’s MCP config JSON file to add Zaturn. You can link data sources as <code class="language-plaintext highlighter-rouge">args</code>. An example is shown below:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"mcpServers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"zaturn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zaturn_mcp"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"postgresql://username:password@host:port/dbname"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mysql://username:password@host:port/dbname"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"sqlite:////full/path/to/sample_dbs/northwind.db"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"clickhouse://username:password@host:port/dbname"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"mssql://user:pwd@hostname:port/dbname"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"/full/path/to/sample_dbs/titanic.parquet"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"/full/path/to/sample_dbs/ny_aq.csv"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"/full/path/to/sample_dbs/duckdb_sample.duckdb"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
 		</section>
 	  </div>
     </main>

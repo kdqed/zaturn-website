@@ -2,24 +2,24 @@
 <html>
   <head>
     <meta charset="utf-8">
-	<title>{{ page.title }}</title>
+	<title>Using Zaturn as a Web UI</title>
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-	<meta name="description" content="{{page.description}}">
+	<meta name="description" content="AI-powered data analysis for everyone">
 	<link rel="shortcut icon" type="image/png" href="/assets/logo.ico">
 		  
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="{{page.title}}">
-	<meta name="twitter:description" content="{{page.description}}">
-	<meta name="twitter:url" content="{{site.base_url}}{{page.url}}">
-	<meta name="twitter:image" content="{{site.base_url}}/assets/covers/{{page.cover_image}}">
+	<meta name="twitter:title" content="Using Zaturn as a Web UI">
+	<meta name="twitter:description" content="AI-powered data analysis for everyone">
+	<meta name="twitter:url" content="https://zaturn.pro/docs/webui.html">
+	<meta name="twitter:image" content="https://zaturn.pro/assets/covers/default.webp">
 
 	<meta property="og:site_name" content="kdqed">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="{{site.base_url}}{{page.url}}">
-	<meta property="og:title" content="{{page.title}}">
-	<meta property="og:description" content="{{page.description}}">
+	<meta property="og:url" content="https://zaturn.pro/docs/webui.html">
+	<meta property="og:title" content="Using Zaturn as a Web UI">
+	<meta property="og:description" content="AI-powered data analysis for everyone">
 
-	<meta property="og:image" content="{{site.base_url}}/assets/covers/{{page.cover_image}}">
+	<meta property="og:image" content="https://zaturn.pro/assets/covers/default.webp">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,7 +67,7 @@
 	    left: 0;
 	    width: 100%;
 	    height: 100vh;
-	    background: url(/assets/covers/{{page.cover_image}});
+	    background: url(/assets/covers/default.webp);
 	    background-position: left top;
 	    background-size: cover;
 	    z-index: -20;
@@ -362,25 +362,7 @@
       }
 	</style>
 		
-		{% if page.is_post %}
-		<script type="application/ld+json">
-		{
-		  "@context": "https://schema.org",
-		  "@type": "{{page.schema_type}}",
-		  "headline": "{{page.title}}",
-		  "image": [
-		  	"/assets/covers/{{page.cover_image}}"
-		  ],
-		  "datePublished": "{{page.date}}",
-		  "dateModified": "{{page.date}}",
-		  "author": [{
-		  	"@type": "Person",
-		  	"name": "Karthik Devan",
-		  	"url": "https://kdqed.com"
-		  }]
-		}
-		</script>
-		{% endif %}
+		
 		
   </head>
   <body>
@@ -405,22 +387,50 @@
     <main>
 	  <div class="hero-container">
 		<section class="hero">
-		  {% if page.url == '/' %}
-		  <img src='/assets/dp.webp' class='dp'>
-		  <br>
-		  {% endif %}
-		  <h1>{{page.title}}</h1>
-		  {% if page.subtitle %}
-		  <h2>{{page.subtitle}}</h2>
-		  {% endif %}
+		  
+		  <h1>Using Zaturn as a Web UI</h1>
+		  
 		</section>
 	  </div>
 	  <div class="content-container">
 		<section class="content">
-		  {% if page.is_post %}
-		  <p><em>{{page.date | date: "%B %-d, %Y"}}</em></p>
-      	{% endif %}
-		  {{content}}
+		  
+		  <p>Once you’ve <a href="/docs/install">installed Zaturn</a>, you can setup and use the Web UI (known as Zaturn Studio) as follows:</p>
+
+<h2 id="1-run-zaturn-studio">1. Run Zaturn Studio</h2>
+
+<p>Run the following command, this will start the web interface.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ zaturn_studio
+</code></pre></div></div>
+
+<p>Next, open the following URL on your browser:</p>
+
+<blockquote>
+  <p>http://localhost:6066</p>
+</blockquote>
+
+<h2 id="2-setup-llm-api">2. Setup LLM API</h2>
+
+<p>Note that Zaturn is an open source bundle of tools that can be used by an LLM. While this part is free, providing LLM runtime for free is not possible on a solo indie-developer budget.</p>
+
+<p>Therefore, you’ll have to bring your own OpenAI-compatible LLM API. Please add the following on the Zaturn Studio interface:</p>
+<ul>
+  <li>API endpoint</li>
+  <li>API key</li>
+  <li>Model Name (thinking models work the best but cost more. Grok 3 Mini was the optimal one in my trials)</li>
+</ul>
+
+<h2 id="3-add-data-sources">3. Add Data Sources</h2>
+
+<p>Add data sources when prompted.</p>
+<ul>
+  <li>For file-based sources (CSV/Parquet/SQLite/DuckDB), upload the files. Zaturn Studio will make its own copy of the file and work on that.</li>
+  <li>For database URLs, please ensure the credentials in the URLs grant just read-only access to the database. While Zaturn tries to ensure that the AI LLM cannot write/modify data on any of the linked sources, this is on a best-effort basis and not guaranteed to work with all kinds of databases.</li>
+  <li>For more information on URL formats and the engines used for each database, see the <a href="/docs/data-sources">data sources page</a></li>
+</ul>
+
+
 		</section>
 	  </div>
     </main>
