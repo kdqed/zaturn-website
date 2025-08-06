@@ -2,24 +2,24 @@
 <html>
   <head>
     <meta charset="utf-8">
-	<title>Using Zaturn as a Web UI</title>
+	<title>Picking AI Models for SQL-based Data Analysis With Zaturn</title>
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-	<meta name="description" content="AI-powered data analysis for everyone">
+	<meta name="description" content="Zaturn lets you analyze your data using AI chat">
 	<link rel="shortcut icon" type="image/png" href="/assets/logo.ico">
 		  
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Using Zaturn as a Web UI">
-	<meta name="twitter:description" content="AI-powered data analysis for everyone">
-	<meta name="twitter:url" content="https://zaturn.pro/docs/webui.html">
-	<meta name="twitter:image" content="https://zaturn.pro/assets/covers/default.webp">
+	<meta name="twitter:title" content="Picking AI Models for SQL-based Data Analysis With Zaturn">
+	<meta name="twitter:description" content="Zaturn lets you analyze your data using AI chat">
+	<meta name="twitter:url" content="https://zaturn.pro/ai-models-for-sql-data-analysis">
+	<meta name="twitter:image" content="https://zaturn.pro/assets/covers/picking-models.webp">
 
 	<meta property="og:site_name" content="kdqed">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="https://zaturn.pro/docs/webui.html">
-	<meta property="og:title" content="Using Zaturn as a Web UI">
-	<meta property="og:description" content="AI-powered data analysis for everyone">
+	<meta property="og:url" content="https://zaturn.pro/ai-models-for-sql-data-analysis">
+	<meta property="og:title" content="Picking AI Models for SQL-based Data Analysis With Zaturn">
+	<meta property="og:description" content="Zaturn lets you analyze your data using AI chat">
 
-	<meta property="og:image" content="https://zaturn.pro/assets/covers/default.webp">
+	<meta property="og:image" content="https://zaturn.pro/assets/covers/picking-models.webp">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,7 +67,7 @@
 	    left: 0;
 	    width: 100%;
 	    height: 100vh;
-	    background: url(/assets/covers/default.webp);
+	    background: url(/assets/covers/picking-models.webp);
 	    background-position: left top;
 	    background-size: cover;
 	    z-index: -20;
@@ -367,6 +367,24 @@
 	</style>
 		
 		
+		<script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "BlogPosting",
+		  "headline": "Picking AI Models for SQL-based Data Analysis With Zaturn",
+		  "image": [
+		  	"/assets/covers/picking-models.webp"
+		  ],
+		  "datePublished": "2025-08-04 00:00:00 -0500",
+		  "dateModified": "2025-08-04 00:00:00 -0500",
+		  "author": [{
+		  	"@type": "Person",
+		  	"name": "Karthik Devan",
+		  	"url": "https://kdqed.com"
+		  }]
+		}
+		</script>
+		
 		
   </head>
   <body>
@@ -405,47 +423,111 @@
 	  <div class="hero-container">
 		<section class="hero">
 		  
-		  <h1>Using Zaturn as a Web UI</h1>
+		  <h1>Picking AI Models for SQL-based Data Analysis With Zaturn</h1>
 		  
 		</section>
 	  </div>
 	  <div class="content-container">
 		<section class="content">
 		  
-		  <p>Once you’ve <a href="/docs/install">installed Zaturn</a>, you can setup and use the Web UI (known as Zaturn Studio) as follows:</p>
+		  <p><em>August 4, 2025</em> by <a href="https://kdqed.com">Karthik Devan</a></p>
+      	
+		  <p>There are many ways to use Zaturn to build an AI for data analysis. You might be using the Claude Desktop App with Zaturn as an MCP, or using an MCP client or AI agent framework where you bring your own LLM API. If you are connecting your own LLM API, you might be running the LLM locally with tools such as <a href="https://ollama.com">Ollama</a>, using the LLM developer’s official API, or using a 3rd party LLM API aggregator such as <a href="https://openrouter.ai/">OpenRouter</a> or <a href="https://www.litellm.ai/">LiteLLM</a>. In every case, there is an important decision to be made: which LLM do you use? In this blog, I try to break down the factors involved in picking an LLM for a data analysis agent.</p>
 
-<h2 id="1-run-zaturn-studio">1. Run Zaturn Studio</h2>
+<h2 id="cost">Cost</h2>
 
-<p>Run the following command, this will start the web interface.</p>
+<p>Quite obviously, the cost is the most important factor that can make or break a use case for an AI application. The cost itself depends on various other factors, such as the organization that developed the LLM, domain knowledge coverage, languages, and other features such as tool calling abilities. The best way to reduce costs is to find models that have exactly the features we need for data analysis, and do not have the features we do not need.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ zaturn_studio
-</code></pre></div></div>
-
-<p>Next, open the following URL on your browser:</p>
-
-<blockquote>
-  <p>http://localhost:6066</p>
-</blockquote>
-
-<h2 id="2-setup-llm-api">2. Setup LLM API</h2>
-
-<p>Note that Zaturn is an open source bundle of tools that can be used by an LLM. While this part is free, providing LLM runtime for free is not possible on a solo indie-developer budget.</p>
-
-<p>Therefore, you’ll have to bring your own OpenAI-compatible LLM API. Please add the following on the Zaturn Studio interface:</p>
+<p>The features you surely need:</p>
 <ul>
-  <li>API endpoint</li>
-  <li>API key</li>
-  <li>Model Name (thinking models work the best but cost more. Grok 3 Mini was the optimal one in my trials)</li>
+  <li>Good tool calling abilities</li>
+  <li>Programming (specifically SQL for Zaturn)</li>
+  <li>Thinking &amp; Reasoning.</li>
 </ul>
 
-<h2 id="3-add-data-sources">3. Add Data Sources</h2>
-
-<p>Add data sources when prompted.</p>
+<p>The features you might need:</p>
 <ul>
-  <li>For file-based sources (CSV/Parquet/SQLite/DuckDB), upload the files. Zaturn Studio will make its own copy of the file and work on that.</li>
-  <li>For database URLs, please ensure the credentials in the URLs grant just read-only access to the database. While Zaturn tries to ensure that the AI LLM cannot write/modify data on any of the linked sources, this is on a best-effort basis and not guaranteed to work with all kinds of databases.</li>
-  <li>For more information on URL formats and the engines used for each database, see the <a href="/docs/data-sources">data sources page</a></li>
+  <li>Image input: If you want the AI to comment on generated images</li>
+  <li>Multilingual support: If you or your users want to prompt in languages other than English</li>
 </ul>
+
+<p>The features you mostly don’t need:</p>
+<ul>
+  <li>Vast domain expertise</li>
+</ul>
+
+<p>In the following sections, let’s look at some of these factors and the most cost-effective models for each factor.</p>
+
+<h2 id="programming-abilities">Programming Abilities</h2>
+
+<p>Data analysis involves writing code to crunch numbers. Unless AI models are good at that, they will not be of much use. So it’s best to pick models that are good at writing code based on human instructions. With Zaturn, data analysis happens through SQL code, which hasn’t changed much in recent years as much as Python or NodeJS frameworks, syntax, and best practices keep changing. So you could cut some costs by choosing an older model, if that is an option.</p>
+
+<p>The following are some models that work best for programming:</p>
+<ul>
+  <li>GLM 4.5 by z.ai</li>
+  <li>Qwen3 Coder by Qwen</li>
+  <li>Kimi K2 by MoonshotAI</li>
+  <li>Gemini 2.5 Flash by Google</li>
+</ul>
+
+<p>Finally, some models that aren’t optimized for programming still work decently well with SQL, as SQL is not as complex as other languages. So the models listed above aren’t your only options.</p>
+
+<h2 id="tool-use">Tool Use</h2>
+
+<p>Zaturn or any other framework that helps LLMs analyze data is bound to work by providing tools to the LLM, which it can use to query the data it needs to query in order to reply to user prompts. So, tool-use ability is a make-or-break criterion while picking an LLM for data analysis. The following are some cost-effective AI models for which I’ve seen decent performance with Zaturn:</p>
+
+<ul>
+  <li>Gemini 2.5 Flash Lite by Google</li>
+  <li>GLM 4.5 by z.ai</li>
+  <li>Grok 3 Mini by xAI</li>
+  <li>GPT-4.1 Nano by OpenAI</li>
+</ul>
+
+<h2 id="open-source--self-hostability">Open Source / Self-hostability</h2>
+
+<p>The Zaturn project is open source and not a SaaS. One of the key advantages of this is that the tools can run locally or on-premises - your database URLs and files aren’t shared with anybody else. The only data that ever goes to a 3rd party is the conversations you have with the LLM, and the data pulled up during the tool usage in these conversations. If you self-host the LLM on your premises, then absolutely no data will be sent to any 3rd party - your full AI-based data analysis stack remains on premises.</p>
+
+<p>Here are some self-hostable models that work best for data analysis:</p>
+<ul>
+  <li>GLM 4.5 by z.ai</li>
+  <li>Qwen 3 32B by Qwen</li>
+</ul>
+
+<p>Some folks also self-host AI models with the intention of reducing the carbon footprint produced by power-hungry GPUs. While this works well for lightweight models that can run on commodity hardware CPUs, having a GPU at home does not necessarily make the approach any greener. In fact, data center GPUs typically are under centralized power use optimizations, while having a powerful GPU at home might actually be a misuse of electricity supplied for domestic purposes.</p>
+
+<h2 id="context-window">Context Window</h2>
+
+<p>Each LLM has a context window that ranges anywhere from a meagre 4K tokens to more than a million tokens. When the context window runs out, a new conversation has to be started, and the LLM will not have any context of the previous messages in the old conversations.</p>
+
+<p>For data analysis tasks, LLMs with smaller context windows cannot do much more than write one or two SQL queries after being presented with a table structure and a prompt. The conversational/agentic experience is lost, and it’s only as good as an SQL autocomplete tool.</p>
+
+<p>From my experience, I’d recommend a context window of at least 128K when you’re asking a specific question about your data. This will leave some room for follow-up questions too. Further, a context window of 1M tokens works amazingly well for in-depth exploratory data analysis. You can let an LLM loose on your data with a prompt like “Here’s all the data from our business, go through it in detail and give us a department-wise action plan for the next quarter.” The LLM can then run a handful of queries and summarize the results for you, keeping all the results in context together.</p>
+
+<p>Here are some LLMs with high context windows (1M+ tokens) that work well for data analysis:</p>
+
+<ul>
+  <li>Gemini 1.5, 2, and 2.5 series by Google</li>
+  <li>GPT-4.1 and variants by OpenAI</li>
+  <li>Qwen Turbo by Qwen</li>
+</ul>
+
+<h2 id="thinking--reasoning">Thinking &amp; Reasoning</h2>
+
+<p>Answering questions using data often involves planning, drafting a series of SQL queries, running them, getting results, and summarizing the results into a concise, useful insight for humans. Models with reasoning and thinking abilities are able to do this effortlessly with a separate budget for “reasoning tokens”.</p>
+
+<p>Models that cannot do this have to be prompted for each step, like “Step 1: Get the orders from the Orders table grouped by Customer; Step 2: Join this with the Customer table and get an aggregate of orders grouped by Customer country.” A model with reasoning abilities can work with a simple prompt, “Which countries are generating the most revenue for us?”. It will automatically go through any table as necessary, perform joins, and produce the required results. If any step fails, the AI will automatically understand what went wrong and try alternative approaches. It can do a lot more with just one prompt.</p>
+
+<h2 id="multimodality">Multimodality</h2>
+
+<p>Data analysis isn’t just text - it involves a lot of visualizations that are images and sometimes even animated GIFs. Zaturn itself includes tools for generating visuals. LLMs operate with different input and output modalities, such as text, audio, image, and video.</p>
+
+<p>For data analysis, only text as an output modality is sufficient for most use cases, as the visuals are generated by the tools and not by the AI model. For input modalities, text works for number crunching and generating verbal insights, while the image input modality is useful to help the AI see and comment on the visuals it generates through tool use. Audio as an input/output modality can help you “talk” to the data analysis agent and add to the coolness factor.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In this blog, we went over the different factors to consider while picking an LLM to work with data as a data analysis agent. Tool-use capabilities, context-window size, and reasoning abilities are the crucial factors that can make or break your experiences. Most models that are good with tool use are fairly decent at writing SQL, so this factor is not much of a separate consideration.</p>
+
+<p>Considering these factors and cost as well, Gemini 2.5 Flash Lite by Google would be my top recommendation. It costs $0.10 / 1M input tokens, $0.40 / 1M output tokens, and supports image inputs as well. The only downside is that it’s not self-hostable. Among the self-hostable models, my current recommendation would be GLM 4.5 by z.ai.</p>
 
 
 		</section>

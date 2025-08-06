@@ -2,22 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8">
-	<title>Using Zaturn as a Web UI</title>
+	<title>Zaturn Blog</title>
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-	<meta name="description" content="AI-powered data analysis for everyone">
+	<meta name="description" content="Blog related to data analysis using AI and Zaturn">
 	<link rel="shortcut icon" type="image/png" href="/assets/logo.ico">
 		  
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Using Zaturn as a Web UI">
-	<meta name="twitter:description" content="AI-powered data analysis for everyone">
-	<meta name="twitter:url" content="https://zaturn.pro/docs/webui.html">
+	<meta name="twitter:title" content="Zaturn Blog">
+	<meta name="twitter:description" content="Blog related to data analysis using AI and Zaturn">
+	<meta name="twitter:url" content="https://zaturn.pro/blog.html">
 	<meta name="twitter:image" content="https://zaturn.pro/assets/covers/default.webp">
 
 	<meta property="og:site_name" content="kdqed">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="https://zaturn.pro/docs/webui.html">
-	<meta property="og:title" content="Using Zaturn as a Web UI">
-	<meta property="og:description" content="AI-powered data analysis for everyone">
+	<meta property="og:url" content="https://zaturn.pro/blog.html">
+	<meta property="og:title" content="Zaturn Blog">
+	<meta property="og:description" content="Blog related to data analysis using AI and Zaturn">
 
 	<meta property="og:image" content="https://zaturn.pro/assets/covers/default.webp">
 
@@ -405,48 +405,90 @@
 	  <div class="hero-container">
 		<section class="hero">
 		  
-		  <h1>Using Zaturn as a Web UI</h1>
+		  <h1>Zaturn Blog</h1>
 		  
 		</section>
 	  </div>
 	  <div class="content-container">
 		<section class="content">
 		  
-		  <p>Once you’ve <a href="/docs/install">installed Zaturn</a>, you can setup and use the Web UI (known as Zaturn Studio) as follows:</p>
+		  <style>
+  a.feed-link {
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.25rem;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg2);
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+  }
+  
+  a.feed-link svg {
+    height: 1rem;
+    width: auto;
+  }
+  
+  a.feed-link svg path {
+    stroke: var(--fg1);
+    stroke-width: 0.07rem;
+  }
+  
+  a.post {
+    display: grid;
+    grid-template-columns: 15vw 1fr;
+    gap: 1rem;
+    text-decoration: none;
+    padding: 1rem;
+    background: var(--bg2);
+    border-radius: 0.5rem;
+  }
+  
+  a.post img {
+    width: 15vw;
+    height: 15vw;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+  
+  a.post p.title {
+    font-weight: bold;
+    color: var(--fg1);
+  }
+  
+  a.post p.date {
+    font-size: 0.9rem;
+    color: var(--tblue);
+  }
+  
+  @media screen and (max-width: 640px) {
+    a.post {
+      grid-template-columns: 1fr;
+    }
+    
+    a.post img {
+      width: 100%;
+      aspect-ratio: 21 / 9;
+      height: auto;
+    }
+  }
+</style>
 
-<h2 id="1-run-zaturn-studio">1. Run Zaturn Studio</h2>
 
-<p>Run the following command, this will start the web interface.</p>
+<a class='post' href='/ai-models-for-sql-data-analysis'>
+  <img src="/assets/covers/picking-models.webp">
+  <div>
+    <p class='title'>Picking AI Models for SQL-based Data Analysis With Zaturn</p>
+    <p class='date'><em>August 4, 2025</em></p>
+  </div>
+</a>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ zaturn_studio
-</code></pre></div></div>
 
-<p>Next, open the following URL on your browser:</p>
-
-<blockquote>
-  <p>http://localhost:6066</p>
-</blockquote>
-
-<h2 id="2-setup-llm-api">2. Setup LLM API</h2>
-
-<p>Note that Zaturn is an open source bundle of tools that can be used by an LLM. While this part is free, providing LLM runtime for free is not possible on a solo indie-developer budget.</p>
-
-<p>Therefore, you’ll have to bring your own OpenAI-compatible LLM API. Please add the following on the Zaturn Studio interface:</p>
-<ul>
-  <li>API endpoint</li>
-  <li>API key</li>
-  <li>Model Name (thinking models work the best but cost more. Grok 3 Mini was the optimal one in my trials)</li>
-</ul>
-
-<h2 id="3-add-data-sources">3. Add Data Sources</h2>
-
-<p>Add data sources when prompted.</p>
-<ul>
-  <li>For file-based sources (CSV/Parquet/SQLite/DuckDB), upload the files. Zaturn Studio will make its own copy of the file and work on that.</li>
-  <li>For database URLs, please ensure the credentials in the URLs grant just read-only access to the database. While Zaturn tries to ensure that the AI LLM cannot write/modify data on any of the linked sources, this is on a best-effort basis and not guaranteed to work with all kinds of databases.</li>
-  <li>For more information on URL formats and the engines used for each database, see the <a href="/docs/data-sources">data sources page</a></li>
-</ul>
-
+<a class="feed-link" href="/feed.xml" target="_blank">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 19C12 14.8 9.2 12 5 12" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19 19C19 10.6 13.4 5 5 5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5 19.01L5.01 18.9989" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+  <span>https://zaturn.pro/feed.xml</span>
+</a>
 
 		</section>
 	  </div>

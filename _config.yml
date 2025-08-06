@@ -39,3 +39,5 @@ defaults:
     values:
       is_post: true
       schema_type: BlogPosting
+      author_name: "Karthik Devan"
+      author_url: "https://kdqed.com"
