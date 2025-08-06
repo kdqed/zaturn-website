@@ -4,7 +4,7 @@ permalink: ai-models-for-sql-data-analysis
 cover_image: picking-models.webp
 ---
 
-There are many ways to use Zaturn to build an AI for data analysis. You might be using the Claude Desktop App with Zaturn as an MCP, or using an MCP client or AI agent framework where you bring your own LLM API. If you are connecting your own LLM API, you might be running the LLM locally with tools such as [Ollama](https://ollama.com), using the LLM developer's official API, or using a 3rd party LLM API aggregator such as [OpenRouter](https://openrouter.ai/) or [LiteLLM](https://www.litellm.ai/). In every case, there is an important decision to be made: which LLM do you use? In this blog, I try to break down the factors involved in picking an LLM for a data analysis agent.
+There are many ways to use Zaturn to build an AI for data analysis. You might be using the Claude Desktop App with Zaturn as an MCP, or using an MCP client or AI agent framework where you bring your own LLM API. If you are connecting your own LLM API, you might be running the LLM locally with tools such as [Ollama](https://ollama.com), using the LLM developer's official API, or using a 3rd party LLM API aggregator such as [OpenRouter](https://openrouter.ai/) or [LiteLLM](https://www.litellm.ai/). In every case, there is an important decision to be made: which LLM do you use? In this blog, let's break down the factors involved in picking an LLM for a data analysis agent.
 
 ## Cost
 
