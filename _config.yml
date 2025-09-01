@@ -19,6 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 base_url: "https://zaturn.pro"
+url: "https://zaturn.pro"
 
 # Build settings
 plugins:
