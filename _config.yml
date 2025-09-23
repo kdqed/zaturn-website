@@ -22,6 +22,7 @@ base_url: "https://zaturn.pro"
 url: "https://zaturn.pro"
 
 # Build settings
+include: [".well-known"]
 plugins:
   - jekyll-feed
 
