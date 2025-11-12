@@ -43,8 +43,8 @@
 	    --fg2: #bad3e8;
 	    --td: #175a92;
 	    --tl: #5ca8e6;
-	    --base-size: clamp(18px, 1.7vw, 32px);
-	    --max-width: calc(var(--base-size)*42);
+	    --base-size: clamp(16px, 1.5vw, 32px);
+	    --max-width: calc(var(--base-size)*45);
 	    font-size: var(--base-size);
 	    letter-spacing: 0.01rem;
 	  }
@@ -331,7 +331,7 @@
         font-size: 0.9rem;
         line-height: 160%;
         border-radius: 0.25rem;
-        border: 0.15rem solid var(--tred);
+        border-left: 0.5rem solid var(--tl);
       }
       
       blockquote>p {
@@ -358,12 +358,22 @@
 		border-radius: 0.1rem;
 		overflow-x: auto;
 		width: 100%;
-		font-size: 80%;
-      }
+				font-family: "Fira Code", monospace;
+				font-size: 75%;
+		  }
 
-      pre>code, pre>code * {
-		font-family: "Fira Code", monospace;
-      }
+			code, code>* {
+				font-family: "Fira Code", monospace;
+			}
+
+			p>code {
+				background: var(--bg2);
+				display: inline-block;
+				padding: 0.05rem 0.25rem;
+				border-radius: 0.1rem;
+				font-size: 75%;
+			}
+			
 		</style>
 		
 		

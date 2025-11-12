@@ -43,8 +43,8 @@
 	    --fg2: #bad3e8;
 	    --td: #175a92;
 	    --tl: #5ca8e6;
-	    --base-size: clamp(18px, 1.7vw, 32px);
-	    --max-width: calc(var(--base-size)*42);
+	    --base-size: clamp(16px, 1.5vw, 32px);
+	    --max-width: calc(var(--base-size)*45);
 	    font-size: var(--base-size);
 	    letter-spacing: 0.01rem;
 	  }
@@ -331,7 +331,7 @@
         font-size: 0.9rem;
         line-height: 160%;
         border-radius: 0.25rem;
-        border: 0.15rem solid var(--tred);
+        border-left: 0.5rem solid var(--tl);
       }
       
       blockquote>p {
@@ -358,12 +358,22 @@
 		border-radius: 0.1rem;
 		overflow-x: auto;
 		width: 100%;
-		font-size: 80%;
-      }
+				font-family: "Fira Code", monospace;
+				font-size: 75%;
+		  }
 
-      pre>code, pre>code * {
-		font-family: "Fira Code", monospace;
-      }
+			code, code>* {
+				font-family: "Fira Code", monospace;
+			}
+
+			p>code {
+				background: var(--bg2);
+				display: inline-block;
+				padding: 0.05rem 0.25rem;
+				border-radius: 0.1rem;
+				font-size: 75%;
+			}
+			
 		</style>
 		
 		
@@ -412,7 +422,47 @@
 	  <div class="content-container">
 		<section class="content">
 		  
-		  <p>Zaturn supports the data sources listed below. For each data source, please take security precautions by ensuring read-only access through URL credentials, or making backup copies of data files. This is critical because AI LLMs will be running SQL on your data directly and they can be quite unpredictable.</p>
+		  <p>Zaturn supports the data sources listed below. For each data source, please take security precautions by ensuring read-only access through URL / credentials, or making backup copies of data files. This is critical because AI LLMs will be running SQL on your data directly and they can be quite unpredictable.</p>
+
+<p>Jump To:</p>
+
+<ul>
+  <li><a href="#bigquery">BigQuery</a></li>
+  <li><a href="#clickhouse">Clickhouse</a></li>
+  <li><a href="#csv">CSV</a></li>
+  <li><a href="#duckdb">DuckDB</a></li>
+  <li><a href="#mysql">MySQL</a></li>
+  <li><a href="#parquet">Parquet</a></li>
+  <li><a href="#postgresql">PostgreSQL</a></li>
+  <li><a href="#sqlite">SQLite</a></li>
+  <li><a href="#sql-server">SQL Server</a></li>
+</ul>
+
+<h2 id="bigquery">BigQuery</h2>
+
+<p>BigQuery is supported using the <a href="https://docs.cloud.google.com/python/docs/reference/bigquery/latest">Python client for Google BigQuery</a> under the hood.</p>
+
+<p>To use BigQuery, you first need to create a service account with read-only access to the data source(s) you wish to connect with Zaturn. Reference: https://docs.cloud.google.com/bigquery/docs/samples/bigquery-client-json-credentials</p>
+
+<p>Next, download the service account key, rename it to <code class="language-plaintext highlighter-rouge">bigquery-service-account.json</code>, and move it to the Zaturn application directory. The location of this directory changes based on the OS. Zaturn looks for this service account key file in the following locations:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Linux: /home/&lt;your-user-name&gt;/.local/share/zaturn/bigquery-service-account.json
+MacOS: /Users/&lt;your-user-name&gt;/Library/Application Support/zaturn/bigquery-service-account.json
+Windows: C:\\Users\\&lt;your-user-name&gt;\\AppData\\Local\\zaturn\\zaturn\\bigquery-service-account.json
+</code></pre></div></div>
+
+<p>Last step: You can specify database URLs in the following format:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bigquery://&lt;project-name&gt;/&lt;database-name&gt;
+</code></pre></div></div>
+
+<p>E.g.:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bigquery://bigquery-public-data/pypi
+</code></pre></div></div>
+
+<blockquote>
+  <p>IMPORTANT: With BigQuery, it has not been possible to ensure that the database connection is read-only using the available client libraries. Therefore, please ensure that the service account key provided has only read-only access and cannot modify any data.</p>
+</blockquote>
 
 <h2 id="clickhouse">Clickhouse</h2>
 

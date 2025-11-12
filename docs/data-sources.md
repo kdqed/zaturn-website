@@ -3,7 +3,46 @@ title: "Supported Data Sources"
 description: "AI-powered data analysis for everyone"
 ---
 
-Zaturn supports the data sources listed below. For each data source, please take security precautions by ensuring read-only access through URL credentials, or making backup copies of data files. This is critical because AI LLMs will be running SQL on your data directly and they can be quite unpredictable. 
+Zaturn supports the data sources listed below. For each data source, please take security precautions by ensuring read-only access through URL / credentials, or making backup copies of data files. This is critical because AI LLMs will be running SQL on your data directly and they can be quite unpredictable. 
+
+Jump To:
+
+- [BigQuery](#bigquery)
+- [Clickhouse](#clickhouse)
+- [CSV](#csv)
+- [DuckDB](#duckdb)
+- [MySQL](#mysql)
+- [Parquet](#parquet)
+- [PostgreSQL](#postgresql)
+- [SQLite](#sqlite)
+- [SQL Server](#sql-server)
+
+## BigQuery
+
+BigQuery is supported using the [Python client for Google BigQuery](https://docs.cloud.google.com/python/docs/reference/bigquery/latest) under the hood.
+
+To use BigQuery, you first need to create a service account with read-only access to the data source(s) you wish to connect with Zaturn. Reference: https://docs.cloud.google.com/bigquery/docs/samples/bigquery-client-json-credentials
+
+Next, download the service account key, rename it to `bigquery-service-account.json`, and move it to the Zaturn application directory. The location of this directory changes based on the OS. Zaturn looks for this service account key file in the following locations:
+
+```
+Linux: /home/<your-user-name>/.local/share/zaturn/bigquery-service-account.json
+MacOS: /Users/<your-user-name>/Library/Application Support/zaturn/bigquery-service-account.json
+Windows: C:\\Users\\<your-user-name>\\AppData\\Local\\zaturn\\zaturn\\bigquery-service-account.json
+```
+
+Last step: You can specify database URLs in the following format:
+
+```
+bigquery://<project-name>/<database-name>
+```
+
+E.g.:
+```
+bigquery://bigquery-public-data/pypi
+```
+
+> IMPORTANT: With BigQuery, it has not been possible to ensure that the database connection is read-only using the available client libraries. Therefore, please ensure that the service account key provided has only read-only access and cannot modify any data.
 
 ## Clickhouse
 

@@ -19,6 +19,7 @@ Modify your LLM client's MCP config JSON file to add Zaturn. You can link data s
       "sqlite:////full/path/to/sample_dbs/northwind.db",
       "clickhouse://username:password@host:port/dbname",
       "mssql://user:pwd@hostname:port/dbname",
+      "bigquery://project-name/dbname",
       "/full/path/to/sample_dbs/titanic.parquet",
       "/full/path/to/sample_dbs/ny_aq.csv",
       "/full/path/to/sample_dbs/duckdb_sample.duckdb"
@@ -26,3 +27,5 @@ Modify your LLM client's MCP config JSON file to add Zaturn. You can link data s
   },
 }
 ```
+
+For BigQuery, you also need to configure a Google service account. See [/docs/data-sources#bigquery](/docs/data-sources#bigquery)
